@@ -1,0 +1,31 @@
+use syntaxhrm_mysql;
+
+select * from syntaxhrm_mysql.hs_hr_employees;
+select emp_firstname, emp_lastname
+from hs_hr_employees
+order by emp_firstname desc;
+
+select distinct emp_firstname, emp_lastname
+from hs_hr_employees
+order by emp_firstname asc;
+
+select emp_firstname, emp_lastname
+from hs_hr_employees
+where emp_firstname="Yunus"
+order by emp_lastname asc;
+
+-- display only first name with null birthday and in a descending order
+select emp_firstname
+from hs_hr_employees
+where emp_birthday is null
+order by emp_firstname desc;
+
+-- display firstname lastname and birthday without null values
+select emp_firstname, emp_lastname, emp_birthday
+from hs_hr_employees
+where emp_birthday is not null;
+
+
+
+
+
