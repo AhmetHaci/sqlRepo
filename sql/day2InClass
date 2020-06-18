@@ -1,0 +1,74 @@
+use syntaxhrm_mysql ;
+-- How to display information about employees who do not have assign job titles?
+select emp_firstname, emp_lastname, job_title_code
+from hs_hr_employees
+where job_title_code is null;
+select * from hs_hr_employees where job_title_code is null;
+-- How to find employees first name, last name that do not have home phone number and display first names in alphabetical order.
+select emp_firstname, emp_lastname
+from hs_hr_employees
+where emp_hm_telephone is null
+order by emp_firstname asc;
+
+-- How to display about all employees whose DOB has been entered. We want to see employees sorted by last name from Z-A?
+
+select emp_firstname
+from syntaxhrm_mysql.hs_hr_employees
+where emp_birthday is not null
+order by emp_firstname desc;
+
+-- display all the information about employee whose first name is John and lastname is Doe
+select * from hs_hr_employees
+where emp_firstname='John' and emp_lastname='Doe';
+
+-- display all the info from employees whose emp id are 13288 13290 13292
+
+select * from hs_hr_employees
+where employee_id=13288 and employee_id=13290 and employee_id=13292;
+
+-- display all the job titles except bakery checf
+
+select * from ohrm_job_title
+where  not job_title= 'Bakery Chef';
+
+select * from hs_hr_employees
+where employee_id in (13288, 13290, 13292, 11123);
+
+-- this will bring all the employees named yunus and john
+select * from hs_hr_employees
+where emp_firstname in ('John', 'Yunus');
+
+-- display employees first and lastname and employee id who have emp id s from 11123 until 13288
+select emp_firstname, emp_lastname, employee_id
+from hs_hr_employees
+where employee_id between 11123 and 13288
+order by employee_id asc;
+
+-- all employe names start with a we can add more letter like an  an%   %an ifadenin arkasina koyarsan an ile bitenleri buluir 
+select * from hs_hr_employees
+where emp_firstname like '%an';
+
+-- display first name and last name and birthday from those employees who were born on  2000
+
+select emp_firstname,emp_lastname,emp_birthday from hs_hr_employees
+where emp_birthday like "2000%";
+
+-- display first name and last name and birthday from those employees who were born after  2000
+
+select emp_firstname,emp_lastname,emp_birthday from hs_hr_employees
+where emp_birthday > "2000%";
+
+-- display all the nationalities which starts with a 
+
+select *
+from ohrm_nationality
+where name like 'a%';
+
+-- display all the employees who born in february 
+
+select emp_firstname, emp_lastname, emp_birthday
+from hs_hr_employees
+where emp_birthday like '%02-__';
+
+
+
